@@ -59,5 +59,46 @@ describe('Gilded Rose', () => {
       expect(items[0].quality).toEqual(80)
     });
   });
-});
 
+  describe('Backstage pass behaviour', () => {
+    it('when sellIn value is > 10, quality increases by 1 each day', () => {
+      const gildedRose = new Shop([new Item('Backstage passes to a TAFKAL80ETC concert', 20, 20), 
+        new Item('Backstage passes to a TAFKAL80ETC concert', 11, 20)]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].sellIn).toEqual(19)
+      expect(items[0].quality).toEqual(21)
+      expect(items[1].sellIn).toEqual(10)
+      expect(items[1].quality).toEqual(21)
+    });
+
+    it('when sellIn value is < 10 but > 5, quality increases by 2 each day', () => {
+      const gildedRose = new Shop([new Item('Backstage passes to a TAFKAL80ETC concert', 10, 20), 
+        new Item('Backstage passes to a TAFKAL80ETC concert', 6, 20)]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].sellIn).toEqual(9)
+      expect(items[0].quality).toEqual(22)
+      expect(items[1].sellIn).toEqual(5)
+      expect(items[1].quality).toEqual(22)
+    });
+
+    it('when sellIn value is < 5 but > -1, quality increases by 3 each day', () => {
+      const gildedRose = new Shop([new Item('Backstage passes to a TAFKAL80ETC concert', 5, 20), 
+        new Item('Backstage passes to a TAFKAL80ETC concert', 1, 20)]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].sellIn).toEqual(4)
+      expect(items[0].quality).toEqual(23)
+      expect(items[1].sellIn).toEqual(0)
+      expect(items[1].quality).toEqual(23)
+    });
+
+    it('when sellIn value is < 0, quality is 0', () => {
+      const gildedRose = new Shop([new Item('Backstage passes to a TAFKAL80ETC concert', 0, 20), 
+        new Item('Backstage passes to a TAFKAL80ETC concert', -10, 0)]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].sellIn).toEqual(-1)
+      expect(items[0].quality).toEqual(0)
+      expect(items[1].sellIn).toEqual(-11)
+      expect(items[1].quality).toEqual(0)
+    });
+  });
+});
