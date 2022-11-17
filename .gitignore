@@ -1,0 +1,8 @@
+/node_modules/
+bin
+obj
+*.sln.DotSettings.user
+.vs
+vendor
+.idea
+*.iml
