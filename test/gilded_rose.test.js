@@ -52,10 +52,10 @@ describe('Gilded Rose', () => {
   });
 
   describe('Sulfuras behaviour', () => {
-    xit('Sulfuras` quality and sellIn value do not change', () => {
-      const gildedRose = new Shop([new Item('Sulfuras, Hand of Ragnaros', 1, 80)]);
+    it('Sulfuras` quality and sellIn value do not change', () => {
+      const gildedRose = new Shop([new Item('Sulfuras, Hand of Ragnaros', 0, 80)]);
       const items = gildedRose.updateQuality();
-      expect(items[0].sellIn).toEqual(1)
+      expect(items[0].sellIn).toEqual(-1)
       expect(items[0].quality).toEqual(80)
     });
   });

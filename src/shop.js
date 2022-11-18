@@ -25,12 +25,7 @@ class Shop {
         break;
     }
     this.minMaxQuality(i);
-  }
-
-  agedBrieBehaviour(i) {
-     this.items[i].quality++;
-    // if (this.items[i].sellIn <= 0) {
-    //   this.items[i].quality--;
+    this.sulfurasBehaviour(i)
   }
 
   normalItemBehaviour(i) {
@@ -39,6 +34,17 @@ class Shop {
      this.items[i].quality--;
    }
  }
+
+  agedBrieBehaviour(i) {
+  this.items[i].quality++;
+}
+
+
+
+sulfurasBehaviour(i) {
+  if(this.items[i].name === 'Sulfuras, Hand of Ragnaros')
+  this.items[i].quality = 80;
+}
 
   minMaxQuality(i) {
     if (this.items[i].quality <= 0) {
