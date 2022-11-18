@@ -16,19 +16,19 @@ describe('Gilded Rose', () => {
       expect(items[0].sellIn).toEqual(9)
     });
 
-    it('can decrement a item`s quality rating after a day passes', () => {
+    xit('can decrement a item`s quality rating after a day passes', () => {
       const gildedRose = new Shop([new Item('Elixir of the Mongoose', 10, 10)]);
       const items = gildedRose.updateQuality();
       expect(items[0].quality).toEqual(9)
     });
 
-    it('if an item`s sellIn value is <= 0, quality decrements by 2', () => {
+    xit('if an item`s sellIn value is <= 0, quality decrements by 2', () => {
       const gildedRose = new Shop([new Item('Elixir of the Mongoose', 0, 10)]);
       const items = gildedRose.updateQuality();
       expect(items[0].quality).toEqual(8)
     });
 
-    it('an item`s quality can never be less than 0', () => {
+    xit('an item`s quality can never be less than 0', () => {
       const gildedRose = new Shop([new Item('+5 Dexterity Vest', 0, 0)]);
       const items = gildedRose.updateQuality();
       expect(items[0].quality).toEqual(0)
@@ -36,14 +36,14 @@ describe('Gilded Rose', () => {
   });
 
   describe('Aged Brie behaviour', () => {
-    it('aged brie`s quality increases the closer it gets to sellIn gets to 0', () => {
+    xit('aged brie`s quality increases the closer it gets to sellIn gets to 0', () => {
       const gildedRose = new Shop([new Item('Aged Brie', 20, 20)]);
       const items = gildedRose.updateQuality();
       expect(items[0].sellIn).toEqual(19)
       expect(items[0].quality).toEqual(21)
     });
 
-    it('an item`s quality cannot be above 50 (excluding Sulfuras)', () => {
+    xit('an item`s quality cannot be above 50 (excluding Sulfuras)', () => {
       const gildedRose = new Shop([new Item('Aged Brie', 20, 50)]);
       const items = gildedRose.updateQuality();
       expect(items[0].sellIn).toEqual(19)
@@ -52,7 +52,7 @@ describe('Gilded Rose', () => {
   });
 
   describe('Sulfuras behaviour', () => {
-    it('Sulfuras` quality and sellIn value do not change', () => {
+    xit('Sulfuras` quality and sellIn value do not change', () => {
       const gildedRose = new Shop([new Item('Sulfuras, Hand of Ragnaros', 1, 80)]);
       const items = gildedRose.updateQuality();
       expect(items[0].sellIn).toEqual(1)
@@ -61,7 +61,7 @@ describe('Gilded Rose', () => {
   });
 
   describe('Backstage pass behaviour', () => {
-    it('when sellIn value is > 10, quality increases by 1 each day', () => {
+    xit('when sellIn value is > 10, quality increases by 1 each day', () => {
       const gildedRose = new Shop([new Item('Backstage passes to a TAFKAL80ETC concert', 20, 20), 
         new Item('Backstage passes to a TAFKAL80ETC concert', 11, 20)]);
       const items = gildedRose.updateQuality();
@@ -71,14 +71,14 @@ describe('Gilded Rose', () => {
       expect(items[1].quality).toEqual(21)
     });
 
-    it('Backstage pass value cannot exceed 50', () => {
+    xit('Backstage pass value cannot exceed 50', () => {
       const gildedRose = new Shop([new Item('Backstage passes to a TAFKAL80ETC concert', 20, 50)]);
       const items = gildedRose.updateQuality();
       expect(items[0].sellIn).toEqual(19)
       expect(items[0].quality).toEqual(50)
     });
 
-    it('when sellIn value is < 10 but > 5, quality increases by 2 each day', () => {
+    xit('when sellIn value is < 10 but > 5, quality increases by 2 each day', () => {
       const gildedRose = new Shop([new Item('Backstage passes to a TAFKAL80ETC concert', 10, 20), 
         new Item('Backstage passes to a TAFKAL80ETC concert', 6, 20)]);
       const items = gildedRose.updateQuality();
@@ -88,7 +88,7 @@ describe('Gilded Rose', () => {
       expect(items[1].quality).toEqual(22)
     });
 
-    it('when sellIn value is < 5 but > -1, quality increases by 3 each day', () => {
+    xit('when sellIn value is < 5 but > -1, quality increases by 3 each day', () => {
       const gildedRose = new Shop([new Item('Backstage passes to a TAFKAL80ETC concert', 5, 20), 
         new Item('Backstage passes to a TAFKAL80ETC concert', 1, 20)]);
       const items = gildedRose.updateQuality();
@@ -98,7 +98,7 @@ describe('Gilded Rose', () => {
       expect(items[1].quality).toEqual(23)
     });
 
-    it('when sellIn value is < 0, quality is 0', () => {
+    xit('when sellIn value is < 0, quality is 0', () => {
       const gildedRose = new Shop([new Item('Backstage passes to a TAFKAL80ETC concert', 0, 20), 
         new Item('Backstage passes to a TAFKAL80ETC concert', -10, 0)]);
       const items = gildedRose.updateQuality();
@@ -110,21 +110,21 @@ describe('Gilded Rose', () => {
   });
 
   describe('Conjured Mana Cake behaviour', () => {
-    it('decreases in quality by 2 each day', () => {
+    xit('decreases in quality by 2 each day', () => {
       const gildedRose = new Shop([new Item('Conjured Mana Cake', 20, 20)]);
       const items = gildedRose.updateQuality();
       expect(items[0].sellIn).toEqual(19)
       expect(items[0].quality).toEqual(18)
     });
 
-    it('decreases in quality by 4 per day once sellIn rate reaches 0', () => {
+    xit('decreases in quality by 4 per day once sellIn rate reaches 0', () => {
       const gildedRose = new Shop([new Item('Conjured Mana Cake', 0, 20)]);
       const items = gildedRose.updateQuality();
       expect(items[0].sellIn).toEqual(-1)
       expect(items[0].quality).toEqual(16)
     });
 
-    it('it`s quality cannot go below 0', () => {
+    xit('it`s quality cannot go below 0', () => {
       const gildedRose = new Shop([new Item('Conjured Mana Cake', 10, 0)]);
       const items = gildedRose.updateQuality();
       expect(items[0].sellIn).toEqual(9)
