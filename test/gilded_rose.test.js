@@ -101,4 +101,27 @@ describe('Gilded Rose', () => {
       expect(items[1].quality).toEqual(0)
     });
   });
+
+  describe('Conjured Mana Cake behaviour', () => {
+    it('decreases in quality by 2 each day', () => {
+      const gildedRose = new Shop([new Item('Conjured Mana Cake', 20, 20)]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].sellIn).toEqual(19)
+      expect(items[0].quality).toEqual(18)
+    });
+
+    it('decreases in quality by 4 per day once sellIn rate reaches 0', () => {
+      const gildedRose = new Shop([new Item('Conjured Mana Cake', 0, 20)]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].sellIn).toEqual(-1)
+      expect(items[0].quality).toEqual(16)
+    });
+
+    it('it`s quality cannot go below 0', () => {
+      const gildedRose = new Shop([new Item('Conjured Mana Cake', 10, 0)]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].sellIn).toEqual(9)
+      expect(items[0].quality).toEqual(0)
+    });
+  });
 });
