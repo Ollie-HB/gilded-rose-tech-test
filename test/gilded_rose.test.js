@@ -16,13 +16,13 @@ describe('Gilded Rose', () => {
       expect(items[0].sellIn).toEqual(9)
     });
 
-    xit('can decrement a item`s quality rating after a day passes', () => {
+    it('can decrement a item`s quality rating after a day passes', () => {
       const gildedRose = new Shop([new Item('Elixir of the Mongoose', 10, 10)]);
       const items = gildedRose.updateQuality();
       expect(items[0].quality).toEqual(9)
     });
 
-    xit('if an item`s sellIn value is <= 0, quality decrements by 2', () => {
+    it('if an item`s sellIn value is <= 0, quality decrements by 2', () => {
       const gildedRose = new Shop([new Item('Elixir of the Mongoose', 0, 10)]);
       const items = gildedRose.updateQuality();
       expect(items[0].quality).toEqual(8)
