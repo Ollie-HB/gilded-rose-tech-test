@@ -43,7 +43,7 @@ describe('Gilded Rose', () => {
       expect(items[0].quality).toEqual(21)
     });
 
-    xit('an item`s quality cannot be above 50 (excluding Sulfuras)', () => {
+    it('an item`s quality cannot be above 50 (excluding Sulfuras)', () => {
       const gildedRose = new Shop([new Item('Aged Brie', 20, 50)]);
       const items = gildedRose.updateQuality();
       expect(items[0].sellIn).toEqual(19)

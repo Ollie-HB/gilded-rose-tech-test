@@ -24,7 +24,7 @@ class Shop {
         this.normalItemBehaviour(i);
         break;
     }
-    this.minimumQuality(i);
+    this.minMaxQuality(i);
   }
 
   agedBrieBehaviour(i) {
@@ -40,9 +40,12 @@ class Shop {
    }
  }
 
-  minimumQuality(i) {
+  minMaxQuality(i) {
     if (this.items[i].quality <= 0) {
       this.items[i].quality = 0;
+    }
+   if (this.items[i].quality >= 50) {
+      this.items[i].quality = 50;
     }
   }
 }
