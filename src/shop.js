@@ -13,6 +13,10 @@ class Shop {
           if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
 
             this.items[i].quality--;
+
+        if (this.items[i].name === 'Conjured Mana Cake') {
+          this.items[i].quality--;
+        }
           }
         }
       } else {
@@ -55,6 +59,10 @@ class Shop {
               if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
 
                 this.items[i].quality--;
+
+                if (this.items[i].name === 'Conjured Mana Cake') {
+                  this.items[i].quality--;
+                }
               }
             }
           } else {
