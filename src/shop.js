@@ -53,5 +53,4 @@ class Shop {
     return this.items;
   }
 }
-
 module.exports = Shop;
