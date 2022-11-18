@@ -19,7 +19,10 @@ class Shop {
     switch (this.items[i].name) {
       case 'Aged Brie':
         this.agedBrieBehaviour(i)
-      break;
+          break;
+      case 'Backstage passes to a TAFKAL80ETC concert':
+        this.backstagePassBehaviour(i)
+          break;
       default:
         this.normalItemBehaviour(i);
         break;
@@ -39,7 +42,17 @@ class Shop {
   this.items[i].quality++;
 }
 
-
+backstagePassBehaviour(i) {
+  this.items[i].quality++;
+  if (this.items[i].sellIn < 11) {
+    this.items[i].quality++;
+    if (this.items[i].sellIn < 6) {
+    this.items[i].quality++;
+    if (this.items[i].sellIn < 0)
+    this.items[i].quality = 0;
+    }
+}
+}
 
 sulfurasBehaviour(i) {
   if(this.items[i].name === 'Sulfuras, Hand of Ragnaros')
