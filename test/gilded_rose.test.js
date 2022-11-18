@@ -110,21 +110,21 @@ describe('Gilded Rose', () => {
   });
 
   describe('Conjured Mana Cake behaviour', () => {
-    xit('decreases in quality by 2 each day', () => {
+    it('decreases in quality by 2 each day', () => {
       const gildedRose = new Shop([new Item('Conjured Mana Cake', 20, 20)]);
       const items = gildedRose.updateQuality();
       expect(items[0].sellIn).toEqual(19)
       expect(items[0].quality).toEqual(18)
     });
 
-    xit('decreases in quality by 4 per day once sellIn rate reaches 0', () => {
+    it('decreases in quality by 4 per day once sellIn rate reaches 0', () => {
       const gildedRose = new Shop([new Item('Conjured Mana Cake', 0, 20)]);
       const items = gildedRose.updateQuality();
       expect(items[0].sellIn).toEqual(-1)
       expect(items[0].quality).toEqual(16)
     });
 
-    xit('it`s quality cannot go below 0', () => {
+    it('conjured mana cake`s quality cannot go below 0', () => {
       const gildedRose = new Shop([new Item('Conjured Mana Cake', 10, 0)]);
       const items = gildedRose.updateQuality();
       expect(items[0].sellIn).toEqual(9)

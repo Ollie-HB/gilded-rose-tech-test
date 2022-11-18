@@ -23,6 +23,9 @@ class Shop {
       case 'Backstage passes to a TAFKAL80ETC concert':
         this.backstagePassBehaviour(i)
           break;
+          case 'Conjured Mana Cake':
+        this.conjuredManaCakeBehaviour(i)
+          break;
       default:
         this.normalItemBehaviour(i);
         break;
@@ -48,10 +51,20 @@ backstagePassBehaviour(i) {
     this.items[i].quality++;
     if (this.items[i].sellIn < 6) {
     this.items[i].quality++;
-    if (this.items[i].sellIn < 0)
+    if (this.items[i].sellIn < 0) {
     this.items[i].quality = 0;
     }
+  }
+  }
 }
+
+conjuredManaCakeBehaviour(i) {
+  this.items[i].quality--;
+  this.items[i].quality--;
+  if (this.items[i].sellIn <= 0) {
+    this.items[i].quality--;
+    this.items[i].quality--;
+  }
 }
 
 sulfurasBehaviour(i) {
