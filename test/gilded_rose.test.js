@@ -36,7 +36,7 @@ describe('Gilded Rose', () => {
   });
 
   describe('Aged Brie behaviour', () => {
-    xit('aged brie`s quality increases the closer it gets to sellIn gets to 0', () => {
+    it('aged brie`s quality increases the closer it gets to sellIn gets to 0', () => {
       const gildedRose = new Shop([new Item('Aged Brie', 20, 20)]);
       const items = gildedRose.updateQuality();
       expect(items[0].sellIn).toEqual(19)

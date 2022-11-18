@@ -11,25 +11,34 @@ class Shop {
     return this.items;
   }
 
-  itemBehaviours(i) {
-    switch (this.items[i].name) {
-      default:
-        this.normalItemQuality(i);
-        break;
-    }
-    this.minimumQuality(i);
-  }
-  
   updateSellIn(i) {
     this.items[i].sellIn--;
   }
 
-  normalItemQuality(i) {
-     this.items[i].quality--;
-    if (this.items[i].sellIn <= 0) {
-      this.items[i].quality--;
+  itemBehaviours(i) {
+    switch (this.items[i].name) {
+      case 'Aged Brie':
+        this.agedBrieBehaviour(i)
+      break;
+      default:
+        this.normalItemBehaviour(i);
+        break;
     }
+    this.minimumQuality(i);
   }
+
+  agedBrieBehaviour(i) {
+     this.items[i].quality++;
+    // if (this.items[i].sellIn <= 0) {
+    //   this.items[i].quality--;
+  }
+
+  normalItemBehaviour(i) {
+    this.items[i].quality--;
+   if (this.items[i].sellIn <= 0) {
+     this.items[i].quality--;
+   }
+ }
 
   minimumQuality(i) {
     if (this.items[i].quality <= 0) {
